@@ -23,7 +23,7 @@ ollama pull gemma3:4b
 ```
 2. **Clone and Setup Environment:**
 ```bash
-git clone <my git url>
+git clone https://github.com/lakjshmi/chatbot-todo.git
 cd chatbot-todo
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
