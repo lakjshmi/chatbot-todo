@@ -18,7 +18,7 @@ def extract_task(user_input):
     return response['response'].strip()
 
 st.title("Todo Chat")
-tab1, tab2= st.tabs(["Chat","My List"])
+tab1, tab2,tab3= st.tabs(["Chat","My List","Completed"])
 
 with tab1:
     user_text = st.chat_input("What's on your mind?")
@@ -38,3 +38,9 @@ with tab2:
             c.execute('UPDATE tasks SET status="done" WHERE id=?', (item_id,))
             conn.commit()
             st.rerun()
+
+with tab3:
+    st.header("Completed Tasks")
+    items = c.execute('SELECT id,task FROM tasks WHERE status="done"').fetchall()
+    for item_id,task_text in items:
+        st.write(f"✅{task_text}")
